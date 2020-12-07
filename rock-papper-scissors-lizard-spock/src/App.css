@@ -1,0 +1,22 @@
+#play{
+  margin:0;
+  background:#00afc4;    
+  padding: 3% 0 7%;
+  text-align:center;
+  height:440px;
+  overflow:hidden
+}
+
+#play .wrap{
+  
+  width:60%;
+  margin:0 auto
+}
+
+h1{
+  margin-top:0;
+  font-size:4.1em;
+  line-height:1.1;
+  font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif";
+  color:#fff;
+}
