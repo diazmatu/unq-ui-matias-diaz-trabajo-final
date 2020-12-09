@@ -7,7 +7,7 @@ const Game = () => {
     const [playerChoice, setPlayerChoice] = useState()
     const [rivalChoice, setRivalChoice] = useState()
     const [rock, setRock] = useState()
-    const [papper, setPapper] = useState()
+    const [paper, setPaper] = useState()
     const [scissors, setScissors] = useState()
     const [lizard, setLizard] = useState()
     const [spock, setSpock] = useState()
@@ -19,24 +19,30 @@ const Game = () => {
         setPlayerChoice(document.getElementById("playerChoice"))
         setRivalChoice(document.getElementById("rivalChoice"))
         setRock(document.getElementById("Rock"))
-        setPapper(document.getElementById("Papper"))
+        setPaper(document.getElementById("Paper"))
         setScissors(document.getElementById("Scissors"))
         setLizard(document.getElementById("Lizard"))
         setSpock(document.getElementById("Spock"))
     }, []);
 
     const playerLost = () =>{
-        if(vs === "Computer"){setMatchResult("You lost this match")} 
+        console.log(vs)
+        if(vs === "computer"){setMatchResult("You lost this match")} 
         else{setMatchResult("The second player win this match")}
         setRivalScore(rivalScore + 1)
     }
 
     const playerWin = () =>{
-        if(vs === "Computer"){setMatchResult("You win this match")} 
+        console.log("pre")
+        console.log(playerScore)
+        console.log(rivalScore)
+        if(vs === "computer"){setMatchResult("You win this match")} 
         else{setMatchResult("The first player win this match")}
-        setRivalScore(playerScore + 1)
+        setPlayerScore(playerScore + 1)
+        console.log("post")
+        console.log(playerScore)
+        console.log(rivalScore)
     }
-
 
 
     const decideWinner = () => {
@@ -46,15 +52,15 @@ const Game = () => {
         } else{
             //Conditions Rock
             if (playerChoice.value === "Rock"){
-                if(rivalChoice.value === "Papper" || rivalChoice.value === "Spock") {
+                if(rivalChoice.value === "Paper" || rivalChoice.value === "Spock") {
                     playerLost()
                 } else{
                     playerWin()
                 }
             }
 
-            //Conditions Papper
-            if (playerChoice.value === "Papper"){
+            //Conditions paper
+            if (playerChoice.value === "Paper"){
                 if(rivalChoice.value === "Scissors" || (rivalChoice.value === "Lizard")) {
                     playerLost()
                 } else{
@@ -82,7 +88,7 @@ const Game = () => {
 
             //Conditions Spock
             if (playerChoice.value === "Spock"){
-                if(rivalChoice.value === "Lizard" ||  rivalChoice.value === "Papper") {
+                if(rivalChoice.value === "Lizard" ||  rivalChoice.value === "Paper") {
                     playerLost()
                 } else{
                     playerWin()
@@ -105,20 +111,11 @@ const Game = () => {
 
     const hideOptions = () =>{
         rock.hidden = true
-        papper.hidden = true
+        paper.hidden = true
         scissors.hidden = true
         lizard.hidden = true
         spock.hidden = true
     }
-
-    /*const disableOptions = () =>{
-        rock.disable = true
-        papper.disable = true
-        scissors.disable = true
-        lizard.disable = true
-        spock.disable = true
-        console.log(rock.disable)
-    }*/
 
     const rematch = () =>{
         playerChoice.hidden = true
@@ -127,9 +124,10 @@ const Game = () => {
         document.getElementById("userPlayer").hidden = false
         document.getElementById("rematch").hidden = true
         document.getElementById("result").hidden = true
+        document.getElementById("matchOptions").hidden = true
 
         rock.hidden = false
-        papper.hidden = false
+        paper.hidden = false
         scissors.hidden = false
         lizard.hidden = false
         spock.hidden = false   
@@ -137,31 +135,31 @@ const Game = () => {
     }
 
     const setRockImg = (img) =>{
-        img.src = "https://okdiario.com/img/2019/08/18/caracteristicas-de-la-roca-metamorfica.jpg"
+        img.src = "/Images/Rock.png"
         img.hidden = false
         img.value = "Rock"
     }
 
-    const setPapperImg = (img) =>{
-        img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1wcYj4I5QuE_tQsefOgHsakFTKt5SgM3REg&usqp=CAU"
+    const setPaperImg = (img) =>{
+        img.src = "/Images/Paper.png"
         img.hidden = false
-        img.value = "Papper"
+        img.value = "Paper"
     }
 
     const setScissorsImg = (img) =>{
-        img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY-5NxP_9IVGAZMwT0fW-oMSJ2ZqRLUCSL9A&usqp=CAU"
+        img.src = "/Images/Scissors.png"
         img.hidden = false
         img.value = "Scissors"
     }
 
     const setLizardImg = (img) =>{
-        img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDg-q8GHZtSvjbcepBRovyc0Mskj8FQhFdvA&usqp=CAU"
+        img.src = "/Images/Lizard.png"
         img.hidden = false
         img.value = "Lizard"
     }
 
     const setSpockImg = (img) =>{
-        img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTi-Ho2fOq5iEcWAInB7RdHgWsFv3Y84qMuCA&usqp=CAU"
+        img.src = "/Images/Spock.png"
         img.hidden = false
         img.value = "Spock"
     }
@@ -176,7 +174,7 @@ const Game = () => {
                 break;
               
             case 2:
-                setPapperImg(rivalChoice)
+                setPaperImg(rivalChoice)
                 break;
               
             case 3:
@@ -220,14 +218,15 @@ const Game = () => {
                 document.getElementById("rivalPlayer").hidden = true
                 document.getElementById("rematch").hidden = false
                 document.getElementById("result").hidden = false
+                document.getElementById("matchOptions").hidden = false
             }
             switch (id) {
                 case "Rock":
                     setRockImg(play)
                     break;
                   
-                case "Papper":
-                    setPapperImg(play)
+                case "Paper":
+                    setPaperImg(play)
                     break;
                   
                 case "Scissors":
@@ -255,6 +254,7 @@ const Game = () => {
         document.getElementById("userPlayer").hidden = true
         document.getElementById("rivalPlayer").hidden = true
         document.getElementById("result").hidden = true
+        document.getElementById("matchOptions").hidden = true
         hideOptions()
         resetScore()
         document.getElementById("vs").hidden = false
@@ -263,44 +263,54 @@ const Game = () => {
 
     return(
         <>
-            <h2 className="prompt" >Let the games begin!</h2>
+            <div className="letsBegin"><h2>Let the games begin!</h2></div>
           
             <div id="vs">
-                <p id="vstext">VS</p>
+                <h2 id="vstext">Choose your rival</h2>
                 <div id="opponent">
-                <button id="Computer" onClick={chooseRival}>COMPUTER</button>
-                OR 
-                <button id="Player" onClick={chooseRival}>PLAYER</button>
+                <img className="button" id="Computer" src="/Images/Computer.png" value ="Computer" onClick={chooseRival}/>
+                OR
+                <img className="button" id="Player" src="/Images/Player.png" value ="Player" onClick={chooseRival}/>
                 </div>
             </div>
-            
-            <div hidden id="userPlayer" >Take your pick player
-                <div className="Button"><button id="Rock" onClick={eval(vs)}>ROCK</button></div>
-                <div className="Button"><button id="Papper" onClick={eval(vs)}>PAPPER</button></div>
-                <div className="Button"><button id="Scissors" onClick={eval(vs)}>SCISSORS</button></div>
-                <div className="Button"><button id="Lizard" onClick={eval(vs)}>LIZARD</button></div>
-                <div className="Button"><button id="Spock" onClick={eval(vs)}>SPOCK</button></div>
+            {/*
+            <PlayButtons clickFuntion={eval(vs)} choice={playerChoice}/>
+            <PlayButtons clickFuntion={playerPlay} choice={rivalChoice}/>
+            */}
+            <div hidden id="userPlayer" className="playerButtons">Take your pick player<br/><br/>
+                <img className="button" id="Rock" src="/Images/Rock.png" value ="Rock" onClick={eval(vs)}/>
+                <img className="button" id="Paper" src="/Images/Paper.png" value ="Paper" onClick={eval(vs)}/>
+                <img className="button" id="Scissors" src="/Images/Scissors.png" value ="Scissors" onClick={eval(vs)}/>
+                <img className="button" id="Lizard" src="/Images/Lizard.png" value ="Lizard" onClick={eval(vs)}/>
+                <img className="button" id="Spock" src="/Images/Spock.png" value ="Spock" onClick={eval(vs)}/>
             </div>
             
-            <div hidden id="rivalPlayer" >Take your pick rival
-                <div className="Button"><button id="Rock" onClick={() => playerPlay("Rock", rivalChoice)}>ROCK</button></div>
-                <div className="Button"><button id="Papper" onClick={() => playerPlay("Papper", rivalChoice)}>PAPPER</button></div>
-                <div className="Button"><button id="Scissors" onClick={() => playerPlay("Scissors", rivalChoice)}>SCISSORS</button></div>
-                <div className="Button"><button id="Lizard" onClick={() => playerPlay("Lizard", rivalChoice)}>LIZARD</button></div>
-                <div className="Button"><button id="Spock" onClick={() => playerPlay("Spock", rivalChoice)}>SPOCK</button></div>
+            <div hidden id="rivalPlayer" className="playerButtons">Take your pick rival<br/><br/>
+                <img className="button" id="Rock" src="/Images/Rock.png" value ="Rock" onClick={() => playerPlay("Rock", rivalChoice)}/>
+                <img className="button" id="Paper" src="/Images/Paper.png" value ="Paper" onClick={() => playerPlay("Paper", rivalChoice)}/>
+                <img className="button" id="Scissors" src="/Images/Scissors.png" value ="Scissors" onClick={() => playerPlay("Scissors", rivalChoice)}/>
+                <img className="button" id="Lizard" src="/Images/Lizard.png" value ="Lizard" onClick={() => playerPlay("Lizard", rivalChoice)}/>
+                <img className="button" id="Spock" src="/Images/Spock.png" value ="Spock" onClick={() => playerPlay("Spock", rivalChoice)}/>
             </div>
             
-            <div hidden id="result">
-                <img hidden id="playerChoice" src="" width="50" height="50" alt="playerChoice"></img>
-                <img hidden id="rivalChoice" src="" width="50" height="50" alt="rivalChoice"></img>
+            <div hidden id="result" className="match">
+                <img hidden className="img" id="playerChoice" src="" alt="playerChoice"></img>
+                <img hidden className="img" id="rivalChoice" src="" alt="rivalChoice"></img>
                 <div>
                     {matchResult}<br/>
                     Total Score
-                    {playerScore} -- {rivalScore}</div>
-                <button id="rematch" className="button" onClick={rematch}>Rematch!</button>
-                <button id="resetScore" className="button" onClick={resetScore}>Reset Score</button>
+                    {playerScore} -- {rivalScore}
+                </div>
             </div>
-            <button hidden id="changeRival" className="button" onClick={enableRivals}>Change Rival</button>
+            <div hidden id="matchOptions" className="options" hidden>
+                <button id="rematch" type="button" className="btn btn-outline-dark" onClick={rematch}>Rematch!</button>
+                <button id="resetScore" type="button" className="btn btn-outline-dark" onClick={resetScore}>Reset Score</button></div>
+            <div hidden id="changeRival" className="options">
+                <button type="button" className="btn btn-outline-dark" onClick={enableRivals}>Change Rival</button>
+            </div>
+                
+            
+            
             
         </>
     )

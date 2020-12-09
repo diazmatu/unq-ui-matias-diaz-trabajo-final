@@ -1,5 +1,5 @@
 {
-  "name": "rock-papper-scissors-lizard-spock",
+  "name": "rock-paper-scissors-lizard-spock",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

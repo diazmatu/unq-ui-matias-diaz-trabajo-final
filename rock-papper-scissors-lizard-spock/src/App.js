@@ -5,24 +5,21 @@ import Game from './Game'
 function App() {
   return (
     <>
-      <div id="play">
+      <div className="play">
         <div className="wrap">
-          <header>
-            <h1>
-              <span className="line1">
-                ROCK PAPPER
-              </span>
-              <span className="line2">
-                SCISSORS LIZARD
-              </span>
-              <span className="line3">
-                SPOCK
-              </span>
-            </h1>   
-          </header>
+            
+              <div className="line1">
+                <h1>ROCK PAPER</h1>
+              </div>
+              <div className="line2">
+                <h1>SCISSORS LIZARD</h1>
+              </div>
+              <div className="line3">
+                <h1>SPOCK</h1>
+              </div> 
           
           <Game/>
-          
+
         </div>
       </div>
       <div id="result"></div>
