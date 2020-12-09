@@ -215,7 +215,6 @@ const Game = () => {
             document.getElementById("userPlayer").hidden = true
 
             if(document.getElementById("rivalPlayer").hidden && vs === "player"){
-                console.log("acaaaa")
                 document.getElementById("rivalPlayer").hidden = false
             } else{
                 document.getElementById("rivalPlayer").hidden = true
@@ -264,7 +263,7 @@ const Game = () => {
 
     return(
         <>
-            <h2 className="prompt" >Let the game begin!</h2>
+            <h2 className="prompt" >Let the games begin!</h2>
           
             <div id="vs">
                 <p id="vstext">VS</p>
